@@ -1,0 +1,285 @@
+@import url('reset.css');
+
+    * {
+        box-sizing: border-box;
+    }
+    .container{
+        margin: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    #menu{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: #c4170c;
+    }
+    #menu ul{
+        flex: 1;
+        margin-top: 15.5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #menu ul li{
+        margin-left: 1rem;
+        background-color: #c4170c;
+        text-align: center;
+        cursor: pointer;
+    }
+    #menu ul li a:hover, #menu ul li a.active{
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
+    #menu ul li.esconder{
+        display: none;
+    }
+    #menu ul li a{
+        text-decoration: none;
+        color: white;
+    }
+    #menu .cadastrar{
+        flex: 1;
+        margin: 10px 16px;
+        background-color: #c4170c;
+        padding: 3px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        float: right;
+        color: white;
+        font-size: 1rem;
+        border: 1px solid white;
+    }
+    #menu .cadastrar:hover{
+        background-color: rgb(233, 49, 49);
+        cursor: pointer;
+    }
+    #topo{
+        width: 100%;
+        background-color: #c4170c;
+        font-size: 3rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+    #topo h1 a{
+        text-decoration: none;
+        color: white;
+    }
+    #title{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 65%;
+        min-width: 1200px;
+        height: 1.6rem;
+        margin: 0.5rem auto;
+    }
+    #title h3{
+        flex: 1.6;
+        background-color: #99160d;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    #title h2{
+        flex: 1;
+        background-color: #c4170c;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    #pagina{
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 70vw;
+        max-width: 100%;
+        justify-content: center;
+    }
+    #pagina #noticias{
+        flex: 2;
+        width: 710px;
+        font-size: 1.2rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: #c4170c;
+        line-height: 25px;
+        text-align: center;
+        border-right: 1px solid black;
+        max-width: 800px;
+        padding-right: 40px;
+    }
+    #noticinha{
+        flex: 1;
+        width: 400px;
+        font-size: 1.2rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: #c4170c;
+        line-height: 25px;
+        text-align: center;
+        max-width: 400px;
+        margin-left: 40px;
+    }
+    #noticias a{
+        color: #c4170c;
+        line-height: 25px;
+        text-decoration: none;
+    }
+    #noticinha a{
+        color: #c4170c;
+        line-height: 25px;
+        text-decoration: none;
+    }
+    #noticias a:hover{
+        text-decoration: underline;
+    }
+    #noticinha a:hover{
+        text-decoration: underline;
+    }
+    #pagina #noticias img{
+        width: 710px;
+        max-width: 710px;
+        border-radius: 5px;
+        box-shadow: 0 0 3px black;
+    }
+    #noticinha img{
+        width: 400px;
+        border-radius: 5px;
+        box-shadow: 0 0 3px black;
+    }
+    #rodape{
+        width: 100%;
+        background-color: #c4170c;
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+    }
+    #rodape h1 a{
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: white;
+    }
+    #rodape p{
+        font-size: 1rem;
+        color: white;
+    }
+
+		.modal-container {
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0,0,0,.5);
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			z-index: 2000;
+			display: none;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.modal-container.mostrar {
+			display: flex;
+		}
+
+		.modal {
+			background: white;
+			width: 40%;
+			min-width: 350px;
+			padding: 40px;
+			border: 10px solid #c4170c;
+			box-shadow: 0 0 0 10px white;
+			position: relative;
+		}
+        .input{
+            padding: 5px;
+            width: 250px;
+        }
+
+		@keyframes modal {
+			from {
+				opacity: 0;
+				transform: translate3d(0, -60px, 0);
+			}
+			to {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+
+		.mostrar .modal {
+			animation: modal .3s;
+		}
+
+		.fechar {
+			position: absolute;
+			font-size: 1.2em;
+			top: -30px;
+			right: -30px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			border: 4px solid white;
+			background: #c4170c;
+			color: white;
+			font-family: "PT Mono", monospace;
+			cursor: pointer;
+			box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
+		}
+        @media screen and (min-width: 500px){
+            #pagina{
+                width: 100vw;
+                margin: 0;
+                justify-content: center;
+            }
+            #pagina #noticias{
+                max-width: 450px;
+            }
+            #pagina #noticias img{
+                width: 450px;
+            }
+            
+        }
+    @media screen and (min-width: 768px){
+        #pagina{
+            width: 100vw;
+            margin: 0;
+            justify-content: center;
+        }
+        #pagina #noticias{
+            max-width: 730px;
+        }
+        #pagina #noticias img{
+            width: 700px;
+        }
+    }
+    @media screen and (max-width: 768px){
+        #menu{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        #menu ul{
+            padding-bottom: 0.5rem;
+        }
+        #menu ul li{
+            font-size: 0.7rem;
+        }
+        #menu .cadastrar{
+            font-size: 0.7rem;
+        }
+    }
+    @media screen and (max-width: 1215px){
+        #pagina #noticinha{
+            display: none;
+        }
+        #title{
+            display: none;
+        }
+        #menu ul li.esconder{
+            display: block;
+        }
+        #pagina #noticias{
+            border-right: none;
+        }
+    }

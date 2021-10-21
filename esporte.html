@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Ato da Notícia</title>
+    <link rel="stylesheet" href="estilonoticias.css">
+</head>
+<body>
+    <div class="container">
+        <header id="topo">
+            <h1><img src="noato.png" alt=""></h1>
+        </header>
+        <nav id="menu">
+            <ul>
+                <li class="esconder"><a href="noatodanoticia.html">Geral</a></li>
+                <li><a href="entretenimento.html">Entretenimento</a></li>
+                <li><a href="saude.html">Saúde</a></li>
+                <li><a href="ciencia.html">Ciência</a></li>
+                <li><a href="esporte.html" class="active">Esporte</a></li>
+                <li><a href="tecnologia.html">Tecnologia</a></li>
+                <li><a href="negocios.html">Negócios</a></li>
+            </ul>
+            <div>
+                <button class="cadastrar">Cadastre-se</button>
+            </div>
+        </nav>
+        <div id="title">
+            <h3>Esporte</h3>
+            <h2>Geral</h2>
+        </div>
+        <article id="pagina">
+            <div id="noticias"></div>
+            <div id="noticinha"></div>
+        </article>
+        <footer id="rodape">
+            <h1><img src="noato.png" alt=""></h1><br><br>
+            <p>Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+	<div id="modal-promocao" class="modal-container">
+		<div class="modal">
+			<button class="fechar">x</button>
+			<h3 class="subtitulo">Cadastre-se na Newsletter</h3><br>
+			<form>
+                <input type="text" class="input" placeholder="Primeiro nome"><br><br>
+				<input type="email" class="input" placeholder="Email"><br><br>
+				<input type="button" class="button" value="Cadastrar">
+			</form>
+		</div>
+	</div>
+
+	<script>
+	
+    function iniciaModal(modalID) {
+				const modal = document.getElementById(modalID);
+				if(modal) {
+					modal.classList.add('mostrar');
+					modal.addEventListener('click', (e) => {
+						if(e.target.id == modalID || e.target.className == 'fechar') {
+							modal.classList.remove('mostrar');
+						}
+					});
+				}
+		}
+
+		const logo = document.querySelector('.cadastrar');
+		logo.addEventListener('click', () => iniciaModal('modal-promocao'));
+
+	</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        let value = fetch('https://newsapi.org/v2/top-headlines?country=br&category=general&apiKey=ef63f29e8231469a8c2addcf9fb9b0ee', {
+            method : 'GET'
+        })
+        document.getElementById("noticinha").innerHTML = "Noticias"
+        value
+        .then((response) => { return response.json() })
+        .then((result) => {
+            console.log(result)
+            let noticias = ' '
+            if(result.hasOwnProperty("articles")){
+                result.articles.forEach(value => {
+                    noticias += "<img src=" + value.urlToImage + ">" + "</a>"
+                    noticias += "<br>"
+                    noticias += "<a href='" + value.url + "'>" + value.title  + "</a>"
+                    noticias += "<br><br><br>"
+                })
+            }
+            document.getElementById("noticinha").innerHTML = noticias
+        })
+    })
+</script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            let value = fetch('https://newsapi.org/v2/top-headlines?country=br&category=sports&apiKey=ef63f29e8231469a8c2addcf9fb9b0ee', {
+                method : 'GET'
+            })
+            document.getElementById("noticias").innerHTML = "Noticias"
+            value
+            .then((response) => { return response.json() })
+            .then((result) => {
+                console.log(result)
+                let noticias = ' '
+                if(result.hasOwnProperty("articles")){
+                    result.articles.forEach(value => {
+                        noticias += "<img src=" + value.urlToImage + ">" + "</a>"
+                        noticias += "<br>"
+                        noticias += "<a href='" + value.url + "'>" + value.title  + "</a>"
+                        noticias += "<br><br><br>"
+                    })
+                }
+                document.getElementById("noticias").innerHTML = noticias
+            })
+        })
+    </script>
+</body>
+</html>
